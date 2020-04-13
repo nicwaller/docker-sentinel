@@ -1,0 +1,13 @@
+version: '2.2'
+services:
+  sentinel:
+    build:
+      context: .
+    image: nicwaller/sentinel:latest
+  sentinel-test:
+    image: nicwaller/sentinel:latest
+    working_dir: /test
+    command: ["test"]
+    volumes:
+      - ./test:/test:ro
+

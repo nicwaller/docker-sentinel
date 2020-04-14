@@ -1,10 +1,14 @@
+export SENTINEL_VERSION=0.15.2
+
 .PHONY: build
 build: Dockerfile
+	export SENTINEL_VERSION=$(SENTINEL_VERSION)
 	docker-compose build sentinel
+	docker tag sentinel:compose-latest nicwaller/sentinel:$(SENTINEL_VERSION)
 
 .PHONY: push
 push: build
-	docker push nicwaller/sentinel
+	docker push nicwaller/sentinel:$(SENTINEL_VERSION)
 
 .PHONY: test
 test: build

@@ -3,9 +3,11 @@ services:
   sentinel:
     build:
       context: .
-    image: nicwaller/sentinel:latest
+      args:
+        SENTINEL_VERSION: ${SENTINEL_VERSION}
+    image: sentinel:compose-latest
   sentinel-test:
-    image: nicwaller/sentinel:latest
+    image: sentinel:compose-latest
     working_dir: /test
     command: ["test"]
     volumes:

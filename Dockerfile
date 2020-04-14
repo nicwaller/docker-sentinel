@@ -1,6 +1,8 @@
 FROM ubuntu:latest
 
-ADD https://releases.hashicorp.com/sentinel/0.15.2/sentinel_0.15.2_linux_amd64.zip /sentinel.zip
+ARG SENTINEL_VERSION
+
+ADD https://releases.hashicorp.com/sentinel/${SENTINEL_VERSION}/sentinel_${SENTINEL_VERSION}_linux_amd64.zip /sentinel.zip
 
 RUN apt-get update && \
     apt-get install unzip && \
